@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://bwsfvauadh82"]
+
+[ext_resource type="Script" uid="uid://bjvtvnwanossq" path="res://scripts/player.gd" id="1_g2els"]
+[ext_resource type="Texture2D" uid="uid://dd48a2btstjld" path="res://assets/bug_fly_imgs/bug_fly1.png" id="2_smehm"]
+[ext_resource type="Texture2D" uid="uid://b5bnwl4jt8p1t" path="res://assets/bug-idle.png" id="3_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://d0tyou3bqmn8l" path="res://assets/bug_walk_imgs/bug_walk1.png" id="3_tuyoq"]
+[ext_resource type="Texture2D" uid="uid://dno66cc3myvr2" path="res://assets/bug_fly_imgs/bug_fly2.png" id="3_ur7pv"]
+[ext_resource type="Texture2D" uid="uid://02tvpr1vbkdx" path="res://assets/bug_walk_imgs/bug_walk2.png" id="4_fjrip"]
+[ext_resource type="Texture2D" uid="uid://ccy630shj6ffg" path="res://assets/bug_walk_imgs/bug_walk3.png" id="5_smehm"]
+[ext_resource type="Texture2D" uid="uid://bwdughahhtkrv" path="res://assets/bug_walk_imgs/bug_walk4.png" id="6_ur7pv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
+atlas = ExtResource("3_qhqgy")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yf5fn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_smehm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ur7pv")
+}],
+"loop": 1,
+"name": &"fly",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqkch")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_tuyoq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fjrip")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_smehm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ur7pv")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_onrkg"]
+radius = 6.0
+
+[node name="Player" type="CharacterBody2D" unique_id=460955279]
+collision_mask = 2
+script = ExtResource("1_g2els")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1024639110]
+z_index = 1
+sprite_frames = SubResource("SpriteFrames_yf5fn")
+animation = &"fly"
+frame_progress = 0.117044896
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=419196075]
+shape = SubResource("CircleShape2D_onrkg")
